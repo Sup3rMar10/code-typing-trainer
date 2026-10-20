@@ -80,7 +80,7 @@ I also checked that the tests can fail: I broke the session on purpose in four w
 - 18 snippets, all in this repo's data file; there is no way to paste your own text in the UI.
 - History is the last 100 runs per browser. Clearing site data clears it. No accounts, sync, or leaderboard. Changing an option mid-run starts a fresh run.
 - Not deployed anywhere. To publish it, enable GitHub Pages for the repository and serve the repository root.
-- CI not yet confirmed. The workflow (`.github/workflows/ci.yml`) runs `npm test` on Node 20, 22 and 24, but it has not run on GitHub yet.
+- CI: the workflow (`.github/workflows/ci.yml`) runs `npm test` on Node 20, 22 and 24. CI ran green on all three Node versions on the first run on GitHub Actions (ubuntu-latest, 2026-10-20).
 
 ## Clone
 
