@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Code Typing Trainer</title>
+  <meta name="description" content="Practice typing real code snippets in the browser. Live WPM and accuracy, per-key error stats, personal bests stored locally.">
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Code Typing Trainer</h1>
+    <span class="muted">Type real code. Everything stays in your browser.</span>
+  </header>
+
+  <main class="page">
+    <section class="panel controls" aria-label="Snippet">
+      <label class="field">
+        <span>Language</span>
+        <select id="filter-language"><option value="">All</option></select>
+      </label>
+      <label class="field">
+        <span>Difficulty</span>
+        <select id="filter-difficulty">
+          <option value="">All</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </label>
+      <label class="field grow">
+        <span>Snippet</span>
+        <select id="snippet-select"></select>
+      </label>
+      <div class="actions">
+        <button id="random" type="button">Random</button>
+        <button id="restart" type="button">Restart</button>
+      </div>
+    </section>
+
+    <section class="panel options" aria-label="Options">
+      <label><input id="opt-auto-indent" type="checkbox"> Skip leading indentation after Enter</label>
+      <label><input id="opt-stop-on-error" type="checkbox"> Stop on error</label>
+      <label><input id="opt-show-hint" type="checkbox"> Show the next character</label>
+    </section>
+
+    <section class="stats" aria-label="Live statistics">
+      <div class="stat"><span class="label">WPM</span><span id="stat-wpm" class="value">&ndash;</span></div>
+      <div class="stat"><span class="label">Accuracy</span><span id="stat-accuracy" class="value">100.0%</span></div>
+      <div class="stat"><span class="label">Errors</span><span id="stat-errors" class="value">0</span></div>
+      <div class="stat"><span class="label">Time</span><span id="stat-time" class="value">0:00.0</span></div>
+    </section>
+
+    <section class="panel">
+      <div class="snippet-head">
+        <h2 id="snippet-title"></h2>
+        <span id="snippet-language" class="badge"></span>
+        <span id="snippet-difficulty" class="badge"></span>
+        <span id="snippet-best" class="muted small"></span>
+      </div>
+      <div id="typing" class="typing" tabindex="0" role="group" aria-label="Typing area. Type the code shown. Enter is a new line, Tab is one indent, Backspace deletes, Escape restarts.">
+        <pre id="code" class="code" aria-hidden="true"></pre>
+        <p id="focus-note" class="focus-note">Click here to start typing</p>
+      </div>
+      <p id="next-hint" class="next-hint" aria-live="off"></p>
+      <p class="muted small">Enter = new line, Tab = one indent, Backspace deletes, Esc restarts, Shift+Tab leaves the typing area. The clock starts with your first key.</p>
+      <p id="sr-status" class="sr-only" aria-live="polite"></p>
+    </section>
+
+    <section id="results" class="panel results" aria-label="Results" hidden></section>
+
+    <section class="panel" aria-label="History">
+      <div class="history-head">
+        <h2>Recent runs</h2>
+        <button id="clear-history" type="button">Clear history</button>
+      </div>
+      <p id="history-empty" class="muted">No runs yet.</p>
+      <div class="table-wrap"><table id="history-table" class="grid" hidden>
+        <thead><tr><th>Snippet</th><th>WPM</th><th>Accuracy</th><th>Time</th><th>Errors</th><th>When</th></tr></thead>
+        <tbody id="history-body"></tbody>
+      </table></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>History, personal bests and options are stored in this browser's local storage. Keyboard only: no IME or mobile soft-keyboard support.</span>
+  </footer>
+
+  <script src="src/snippets.js"></script>
+  <script src="src/session.js"></script>
+  <script src="src/lib.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

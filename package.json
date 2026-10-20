@@ -1,0 +1,14 @@
+{
+  "name": "code-typing-trainer",
+  "version": "0.1.0",
+  "description": "A small, dependency-free typing trainer for programmers: code snippets, live WPM and accuracy, per-key error stats, personal bests.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "start": "node scripts/serve.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
